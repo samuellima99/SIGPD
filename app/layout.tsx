@@ -1,10 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Space_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const inter = Inter({ 
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+const spaceMono = Space_Mono({ 
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  variable: "--font-space-mono",
+});
 
 export const metadata: Metadata = {
   title: "SIGPD | Sistema Integrado de Gestão de Presença Docente",
@@ -37,8 +45,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br">
-      <body className={`font-sans antialiased`}>
+    <html lang="pt-br" className={`${inter.variable} ${spaceMono.variable}`}>
+      <body className={`font-sans antialiased text-foreground bg-background`}>
         <AuthProvider>
           {children}
         </AuthProvider>
